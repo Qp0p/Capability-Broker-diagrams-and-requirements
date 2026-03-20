@@ -1,0 +1,144 @@
+@startuml
+
+class JointTargeting {
+}
+
+class Phase2 {
+  + outputs: Joint Target List (JTL)
+  + outputs: Restricted Target List (RTL)
+  + outputs: No-Strike List (NSL)
+}
+
+class IdentifyValidTargets <<Activity>> {
+  + execute()
+  + description: Identifies valid targets that can have actions taken against them for possible engagement to achieve the JTF's objectives.
+}
+
+class PerformTargetSystemAnalysis <<Activity>> {
+  + execute()
+  + description: Evaluates a threat system as it operates in the environment and provides relationships between entities to expose vulnerabilities.
+}
+
+class ConsultLegalAdvisors <<Activity>> {
+  + execute()
+  + description: Consults legal advisors (LEGADs) to ensure the selection of lawful targets.
+}
+
+class ProvideGenderAnalysis <<Activity>> {
+  + execute()
+  + description: Provides gender analysis (GENAD) to support the targeting process.
+}
+
+class PerformQualityControl <<Activity>> {
+  + execute()
+  + description: Assesses the accuracy of the supporting targeting intelligence.
+}
+
+class ValidateTargets <<Activity>> {
+  + execute()
+  + description: Ensures compliance with the commander's objectives, guidance, intent, desired effects, and applicable legal framework.
+}
+
+class TargetDiscovery <<Activity>> {
+  + execute()
+  + description: The process of locating and identifying entities and objects of interest in the operating environment to facilitate target development.
+}
+
+class TargetAnalysis <<Activity>> {
+  + execute()
+  + description: An examination of potential targets to determine military importance, priority of attack, and weapons required to obtain a desired level of damage or casualties.
+}
+
+class TargetIntelligenceProduction <<Activity>> {
+  + execute()
+  + description: Involves the production of target intelligence documents, including target material, in a logical sequence that aligns with the stages of target development.
+}
+
+class IntelligenceStaffResponsibilities <<Activity>> {
+  + execute()
+  + description: During operations, intelligence staffs are responsible for the timely and efficient development of targets in support of the commander's objectives.
+}
+
+class BasicTargetDevelopment <<Activity>> {
+  + execute()
+  + description: Begins the process of uniquely identifying, locating, describing, functionally characterizing, and subsequently databasing entity-level target details.
+}
+
+class IntermediateTargetDevelopment <<Activity>> {
+  + execute()
+  + description: The second stage of target development where analysts fully characterize the entity, assessing possible threat system impact once the entity is affected and steps an adversary might take to mitigate loss of the target during hostilities.
+}
+
+class AdvancedTargetDevelopment <<Activity>> {
+  + execute()
+  + description: Completes the target characterization process and defines the minimum intelligence necessary to plan for effective target engagement, including any intelligence mission data required for employment of a given capability.
+}
+
+class TargetDevelopment <<Capability>> {
+  + description: The capability to identify and develop valid targets for possible engagement.
+}
+
+class TargetValidation <<Capability>> {
+  + description: The capability to validate targets to ensure compliance with objectives and legal framework.
+}
+
+class CollateralDamageEstimation <<Capability>> {
+  + description: The capability to estimate collateral damage to avoid or minimize unintended effects.
+}
+
+class TargetNomination <<Capability>> {
+  + description: The capability to nominate validated targets for approval via the Joint Targeting Coordination Board (JTCB).
+}
+
+class TargetEngagementAuthority <<Capability>> {
+  + description: The authority granted to a Commander to approve target engagement.
+}
+
+class TargetSelectionStandards <<Capability>> {
+  + description: Criteria applicable to future targets to enable successful detection and engagement.
+}
+
+class PositiveIdentification <<Capability>> {
+  + description: The capability to provide reasonable certainty that a functionally and geospatially defined entity is a valid military objective.
+}
+
+class TargetIntelligence <<Capability>> {
+  + description: The intelligence produced for the targeting process that portrays and locates the components of a target and indicates its vulnerability and relative importance.
+}
+
+IdentifyValidTargets "1" *-- "1" TargetDevelopment
+IdentifyValidTargets "1" *-- "1" TargetSelectionStandards
+ValidateTargets "1" *-- "1" TargetValidation
+ValidateTargets "1" *-- "1" TargetNomination
+ValidateTargets "1" *-- "1" TargetEngagementAuthority
+ValidateTargets "1" *-- "1" PositiveIdentification
+PerformTargetSystemAnalysis "1" *-- "1" CollateralDamageEstimation
+TargetIntelligenceProduction "1" *-- "1" TargetIntelligence
+
+JointTargeting "1" *-- "1" Phase2
+Phase2 "1" *-- "1" IdentifyValidTargets
+Phase2 "1" *-- "1" PerformTargetSystemAnalysis
+Phase2 "1" *-- "1" ConsultLegalAdvisors
+Phase2 "1" *-- "1" ProvideGenderAnalysis
+Phase2 "1" *-- "1" PerformQualityControl
+Phase2 "1" *-- "1" ValidateTargets
+Phase2 "1" *-- "1" TargetDiscovery
+Phase2 "1" *-- "1" TargetAnalysis
+Phase2 "1" *-- "1" TargetIntelligenceProduction
+Phase2 "1" *-- "1" IntelligenceStaffResponsibilities
+Phase2 "1" *-- "1" BasicTargetDevelopment
+Phase2 "1" *-- "1" IntermediateTargetDevelopment
+Phase2 "1" *-- "1" AdvancedTargetDevelopment
+
+note top of Phase2
+  Phase 2: Target Development
+  - Identifies valid targets
+  - Performs Target System Analysis (TSA)
+  - Consults legal advisors (LEGADs)
+  - Provides gender analysis (GENAD)
+  - Performs quality control
+  - Validates targets
+  - Outputs: JTL, RTL, NSL
+end note
+
+@enduml

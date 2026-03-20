@@ -1,0 +1,71 @@
+@startuml
+
+class JointTargeting {
+}
+
+class Phase2 {
+  + outputs: Joint Target List (JTL)
+  + outputs: Restricted Target List (RTL)
+  + outputs: No-Strike List (NSL)
+}
+
+class IdentifyValidTargets <<Activity>> {
+  + execute()
+  + description: Identifies valid targets that can have actions taken against them for possible engagement to achieve the JTF's objectives.
+}
+
+class PerformTargetSystemAnalysis <<Activity>> {
+  + execute()
+  + description: Evaluates a threat system as it operates in the environment and provides relationships between entities to expose vulnerabilities.
+}
+
+class ConsultLegalAdvisors <<Activity>> {
+  + execute()
+  + description: Consults legal advisors (LEGADs) to ensure the selection of lawful targets.
+}
+
+class ProvideGenderAnalysis <<Activity>> {
+  + execute()
+  + description: Provides gender analysis (GENAD) to support the targeting process.
+}
+
+class PerformQualityControl <<Activity>> {
+  + execute()
+  + description: Assesses the accuracy of the supporting targeting intelligence.
+}
+
+class ValidateTargets <<Activity>> {
+  + execute()
+  + description: Ensures compliance with the commander's objectives, guidance, intent, desired effects, and applicable legal framework.
+}
+
+class TargetDevelopment <<Capability>> {
+  + description: The capability to identify and develop valid targets for possible engagement.
+}
+
+class TargetValidation <<Capability>> {
+  + description: The capability to validate targets to ensure compliance with objectives and legal framework.
+}
+
+JointTargeting "1" *-- "1" Phase2
+Phase2 "1" *-- "1" IdentifyValidTargets
+Phase2 "1" *-- "1" PerformTargetSystemAnalysis
+Phase2 "1" *-- "1" ConsultLegalAdvisors
+Phase2 "1" *-- "1" ProvideGenderAnalysis
+Phase2 "1" *-- "1" PerformQualityControl
+Phase2 "1" *-- "1" ValidateTargets
+Phase2 "1" *-- "1" TargetDevelopment
+Phase2 "1" *-- "1" TargetValidation
+
+note top of Phase2
+  Phase 2: Target Development
+  - Identifies valid targets
+  - Performs Target System Analysis (TSA)
+  - Consults legal advisors (LEGADs)
+  - Provides gender analysis (GENAD)
+  - Performs quality control
+  - Validates targets
+  - Outputs: JTL, RTL, NSL
+end note
+
+@enduml

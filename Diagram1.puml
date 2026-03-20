@@ -1,0 +1,31 @@
+@startuml
+
+class JointTargeting {
+}
+
+class Phase2 {
+  + identifyValidTargets()
+  + performTargetSystemAnalysis()
+  + consultLegalAdvisors()
+  + provideGenderAnalysis()
+  + performQualityControl()
+  + validateTargets()
+  + outputs: Joint Target List (JTL)
+  + outputs: Restricted Target List (RTL)
+  + outputs: No-Strike List (NSL)
+}
+
+JointTargeting "1" *-- "1" Phase2
+
+note top of Phase2
+  Phase 2: Target Development
+  - Identifies valid targets
+  - Performs Target System Analysis (TSA)
+  - Consults legal advisors (LEGADs)
+  - Provides gender analysis (GENAD)
+  - Performs quality control
+  - Validates targets
+  - Outputs: JTL, RTL, NSL
+end note
+
+@enduml
